@@ -4,7 +4,13 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers'])
+angular.module('stockWatcher', [
+  'ionic',
+  'stockWatcher.controllers',
+  'stockWatcher.services',
+  'stockWatcher.directives',
+  'stockWatcher.filters'
+])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -32,42 +38,42 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     controller: 'AppCtrl'
   })
 
-  .state('app.search', {
-    url: '/search',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/search.html'
-      }
-    }
-  })
-
-  .state('app.browse', {
-      url: '/browse',
+  // .state('app.search', {
+  //   url: '/search',
+  //   views: {
+  //     'menuContent': {
+  //       templateUrl: 'templates/search.html'
+  //     }
+  //   }
+  // })
+  //
+  // .state('app.browse', {
+  //     url: '/browse',
+  //     views: {
+  //       'menuContent': {
+  //         templateUrl: 'templates/browse.html'
+  //       }
+  //     }
+  //   })
+    .state('app.myStocks', {
+      url: '/myStocks',
       views: {
         'menuContent': {
-          templateUrl: 'templates/browse.html'
+          templateUrl: 'templates/myStocks.html',
+          controller: 'MyStocksCtrl'
         }
       }
     })
-    .state('app.playlists', {
-      url: '/playlists',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/playlists.html',
-          controller: 'PlaylistsCtrl'
-        }
-      }
-    })
 
-  .state('app.single', {
-    url: '/playlists/:playlistId',
+  .state('app.singleStock', {
+    url: '/:singleStockTicker',
     views: {
       'menuContent': {
-        templateUrl: 'templates/playlist.html',
-        controller: 'PlaylistCtrl'
+        templateUrl: 'templates/singleStock.html',
+        controller: 'SingleStockCtrl'
       }
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/playlists');
+  $urlRouterProvider.otherwise('/app/myStocks');
 });

@@ -1,4 +1,4 @@
-angular.module('starter.controllers', [])
+angular.module('stockWatcher.controllers', [])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
 
@@ -41,16 +41,27 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('PlaylistsCtrl', function($scope) {
-  $scope.playlists = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
+.controller('MyStocksCtrl', ['$scope', function($scope) {
+  $scope.myStockArray = [
+    {ticker: "AAPL"},
+    {ticker: "GPRO"},
+    {ticker: "FB"},
+    {ticker: "NFLX"},
+    {ticker: "TSLA"},
+    {ticker: "BRK-A"},
+    {ticker: "INTC"},
+    {ticker: "MSFT"},
+    {ticker: "GE"},
+    {ticker: "BAC"},
+    {ticker: "C"},
+    {ticker: "T"}
   ];
-})
+}])
 
-.controller('PlaylistCtrl', function($scope, $stateParams) {
+.controller('SingleStockCtrl', function($scope, $stateParams) {
+  // console.log($stateParams.id);
+  //$scope.dynamicViewTitleFromStateParam = $stateParams.id;
+  // console.log($scope.dynamicViewTitleFromStateParam);
+  // console.log("playlist ctrl");
+  //console.log($stateParams);
 });
